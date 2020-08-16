@@ -38,7 +38,36 @@ function generatePassword() {
         var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");   
     } 
 
+      // assign action to the password character parameters
+      var passwordCharacters = []
+      
+    if (confirmSpecialCharacter) {
+      passwordCharacters = passwordCharacters.concat(specialChar)
+    }
 
+    if (confirmNumericCharacter) {
+      passwordCharacters = passwordCharacters.concat(number)
+    }
+      
+    if (confirmLowerCase) {
+      passwordCharacters = passwordCharacters.concat(alphaLower)
+    }
+
+    if (confirmUpperCase) {
+      passwordCharacters = passwordCharacters.concat(alphaUpper)
+    }
+
+      console.log(passwordCharacters)
+
+      // empty string for random characters from array selected in for loop
+      var randomPassword = ""
+      
+      for (var i = 0; i < confirmLength; i++) {
+        randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+        console.log(randomPassword)
+      }
+      return randomPassword;
+}
 
 // get references to the #generate element
 var generateBtn = document.querySelector("#generate");
